@@ -1,1 +1,1 @@
-# interplanetary-travel-reservation-system-api-kotlin
+# Interplanetary Travel Reservation System API (Kotlin)
