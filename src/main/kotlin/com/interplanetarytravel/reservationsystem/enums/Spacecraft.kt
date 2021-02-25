@@ -7,18 +7,18 @@ enum class Spacecraft(
     val destinations: List<Destination>
 ) {
     // Lunar Fleet
-    UNSS_001("United Nations Starship, Lunar Fleet", "UNSS 001", 100, listOf(Destination.LUNA)),
-    UNSS_002("United Nations Starship, Lunar Fleet", "UNSS 001", 100, listOf(Destination.LUNA)),
-    UNSS_003("United Nations Starship, Lunar Fleet", "UNSS 001", 100, listOf(Destination.LUNA)),
+    UNS_001("United Nations Starship, Lunar Fleet", "UNS 001", 100, listOf(Destination.LUNA)),
+    UNS_002("United Nations Starship, Lunar Fleet", "UNS 001", 100, listOf(Destination.LUNA)),
+    UNS_003("United Nations Starship, Lunar Fleet", "UNS 001", 100, listOf(Destination.LUNA)),
 
     // Martian Fleet
-    UNSS_004("United Nations Starship, Martian Fleet", "UNSS 001", 60, listOf(Destination.LUNA, Destination.MARS)),
-    UNSS_005("United Nations Starship, Martian Fleet", "UNSS 001", 60, listOf(Destination.LUNA, Destination.MARS)),
-    UNSS_006("United Nations Starship, Martian Fleet", "UNSS 001", 60, listOf(Destination.LUNA, Destination.MARS)),
-    UNSS_007("United Nations Starship, Martian Fleet", "UNSS 001", 60, listOf(Destination.LUNA, Destination.MARS)),
+    UNS_004("United Nations Starship, Martian Fleet", "UNS 001", 60, listOf(Destination.LUNA, Destination.MARS)),
+    UNS_005("United Nations Starship, Martian Fleet", "UNS 001", 60, listOf(Destination.LUNA, Destination.MARS)),
+    UNS_006("United Nations Starship, Martian Fleet", "UNS 001", 60, listOf(Destination.LUNA, Destination.MARS)),
+    UNS_007("United Nations Starship, Martian Fleet", "UNS 001", 60, listOf(Destination.LUNA, Destination.MARS)),
 
     // Outer System Fleet
-    UNSS_008("United Nations Starship, Outer System Fleet", "UNSS 001", 20, Destination.values().toList()),
-    UNSS_009("United Nations Starship, Outer System Fleet", "UNSS 001", 20, Destination.values().toList()),
-    UNSS_010("United Nations Starship, Outer System Fleet", "UNSS 001", 20, Destination.values().toList())
+    UNS_008("United Nations Starship, Outer System Fleet", "UNS 001", 20, Destination.values().toList()),
+    UNS_009("United Nations Starship, Outer System Fleet", "UNS 001", 20, Destination.values().toList()),
+    UNS_010("United Nations Starship, Outer System Fleet", "UNS 001", 20, Destination.values().toList())
 }

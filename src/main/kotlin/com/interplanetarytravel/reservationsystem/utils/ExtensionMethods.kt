@@ -28,7 +28,13 @@ fun Destination.toDestinationDto(): DestinationDto {
     return DestinationDto(
         this,
         this.name.toTitleCase(),
-        this.description)
+        this.description,
+        this.diameter,
+        this.gravity,
+        this.orbit,
+        this.rotation,
+        this.day
+    )
 }
 
 fun Spacecraft.toSpacecraftDto(): SpacecraftDto {
@@ -37,5 +43,6 @@ fun Spacecraft.toSpacecraftDto(): SpacecraftDto {
         this.description,
         this.designation,
         this.capacity,
-        this.destinations.map { it.toDestinationDto() })
+        this.destinations.map { it.name }
+    )
 }
