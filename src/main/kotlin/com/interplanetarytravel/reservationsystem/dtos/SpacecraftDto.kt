@@ -8,5 +8,5 @@ data class SpacecraftDto(
     val description: String,
     val designation: String,
     val capacity: Int,
-    val destinations: List<Destination>
+    val destinations: List<DestinationDto>
 )
