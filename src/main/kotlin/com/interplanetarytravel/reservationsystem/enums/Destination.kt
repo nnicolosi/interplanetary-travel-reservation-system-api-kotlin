@@ -8,7 +8,6 @@ enum class Destination(
     val rotation: String,
     val day: String
 ) {
-
     CALLISTO(
         "Callisto is the second-largest moon of Jupiter, after Ganymede. It is composed of approximately equal amounts of rock and ices, with the lowest density and surface gravity of Jupiter's major moons.",
         "4,821 km",

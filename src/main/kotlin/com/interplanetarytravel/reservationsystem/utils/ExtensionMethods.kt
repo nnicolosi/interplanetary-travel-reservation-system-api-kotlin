@@ -3,6 +3,7 @@ package com.interplanetarytravel.reservationsystem.utils
 import com.interplanetarytravel.reservationsystem.dtos.*
 import com.interplanetarytravel.reservationsystem.entities.Voyage
 import com.interplanetarytravel.reservationsystem.enums.Destination
+import com.interplanetarytravel.reservationsystem.enums.Launchpad
 import com.interplanetarytravel.reservationsystem.enums.Spacecraft
 
 fun String.toSentenceCase(): String {
@@ -47,10 +48,19 @@ fun Spacecraft.toSpacecraftDto(): SpacecraftDto {
     )
 }
 
+fun Launchpad.toLaunchpadDto(): LaunchpadDto {
+    return LaunchpadDto(
+            this,
+            this.description,
+            this.designation
+    )
+}
+
 fun Voyage.toVoyageDto(): VoyageDto {
     return VoyageDto(
             this.id,
             this.spacecraft.toSpacecraftDto(),
+            this.launchpad.toLaunchpadDto(),
             this.destination.toDestinationDto(),
             this.departure
     )
@@ -60,6 +70,7 @@ fun VoyageCreateDto.toVoyage(): Voyage {
     return Voyage(
             0,
             this.spacecraft,
+            this.launchpad,
             this.destination,
             this.departure
     )
@@ -69,6 +80,7 @@ fun VoyageUpdateDto.toVoyage(): Voyage {
     return Voyage(
             this.id,
             this.spacecraft,
+            this.launchpad,
             this.destination,
             this.departure
     )

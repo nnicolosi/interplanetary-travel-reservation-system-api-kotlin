@@ -1,6 +1,7 @@
 package com.interplanetarytravel.reservationsystem.entities
 
 import com.interplanetarytravel.reservationsystem.enums.Destination
+import com.interplanetarytravel.reservationsystem.enums.Launchpad
 import com.interplanetarytravel.reservationsystem.enums.Spacecraft
 import java.util.*
 import javax.persistence.*
@@ -11,6 +12,8 @@ data class Voyage(
         val id: Long,
         @Enumerated(EnumType.STRING)
         val spacecraft: Spacecraft,
+        @Enumerated(EnumType.STRING)
+        val launchpad: Launchpad,
         @Enumerated(EnumType.STRING)
         val destination: Destination,
         val departure: Date)
