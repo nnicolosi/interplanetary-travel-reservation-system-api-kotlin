@@ -5,6 +5,9 @@ import com.interplanetarytravel.reservationsystem.entities.Voyage
 import com.interplanetarytravel.reservationsystem.enums.Destination
 import com.interplanetarytravel.reservationsystem.enums.Launchpad
 import com.interplanetarytravel.reservationsystem.enums.Spacecraft
+import java.time.Instant
+import java.time.temporal.ChronoUnit
+import java.util.*
 
 fun String.toSentenceCase(): String {
     return if (this.isNotEmpty()) {
@@ -23,6 +26,19 @@ fun String.toTitleCase(): String {
     } else {
         this
     }
+}
+
+fun Date.isSameDayAs(date: Date): Boolean {
+    val date1 = this.toInstant().truncatedTo(ChronoUnit.DAYS)
+    val date2 = date.toInstant().truncatedTo(ChronoUnit.DAYS)
+
+    return date1.compareTo(date2) == 0
+}
+
+fun Date.isAfterToday(): Boolean {
+    val date = this.toInstant().truncatedTo(ChronoUnit.DAYS)
+
+    return date.isAfter(Instant.now().truncatedTo(ChronoUnit.DAYS))
 }
 
 fun Destination.toDestinationDto(): DestinationDto {
@@ -76,12 +92,12 @@ fun VoyageCreateDto.toVoyage(): Voyage {
     )
 }
 
-fun VoyageUpdateDto.toVoyage(): Voyage {
+fun VoyageUpdateDto.mapUpdatesToVoyage(voyage: Voyage): Voyage {
     return Voyage(
             this.id,
             this.spacecraft,
             this.launchpad,
-            this.destination,
+            voyage.destination,
             this.departure
     )
 }

@@ -5,6 +5,8 @@ import com.interplanetarytravel.reservationsystem.dtos.VoyageDto
 import com.interplanetarytravel.reservationsystem.dtos.VoyageUpdateDto
 import com.interplanetarytravel.reservationsystem.exceptions.VoyageNotFoundException
 import com.interplanetarytravel.reservationsystem.services.VoyageService
+import com.interplanetarytravel.reservationsystem.services.VoyageValidationService
+import com.interplanetarytravel.reservationsystem.utils.mapUpdatesToVoyage
 import com.interplanetarytravel.reservationsystem.utils.toVoyage
 import com.interplanetarytravel.reservationsystem.utils.toVoyageDto
 import org.springframework.http.HttpStatus
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/voyage")
-class VoyageController(val voyageService: VoyageService) {
+class VoyageController(val voyageService: VoyageService, val voyageValidationService: VoyageValidationService) {
 
     @GetMapping("")
     fun listVoyages(): ResponseEntity<List<VoyageDto>> {
@@ -29,6 +31,8 @@ class VoyageController(val voyageService: VoyageService) {
 
     @PostMapping("")
     fun create(@RequestBody dto: VoyageCreateDto): ResponseEntity<VoyageDto> {
+        voyageValidationService.validateVoyageCreateDto(dto)
+
         val voyage = voyageService.save(dto.toVoyage())
 
         return ResponseEntity(voyage.toVoyageDto(), HttpStatus.CREATED)
@@ -36,11 +40,12 @@ class VoyageController(val voyageService: VoyageService) {
 
     @PutMapping("")
     fun update(@RequestBody dto: VoyageUpdateDto): ResponseEntity<VoyageDto> {
-        voyageService.findById(dto.id).orElseThrow { VoyageNotFoundException() }
+        voyageValidationService.validateVoyageUpdateDto(dto)
 
-        val voyage = voyageService.save(dto.toVoyage())
+        val voyage = voyageService.findById(dto.id).get()
+        val updated = voyageService.save(dto.mapUpdatesToVoyage(voyage))
 
-        return ResponseEntity(voyage.toVoyageDto(), HttpStatus.OK)
+        return ResponseEntity(updated.toVoyageDto(), HttpStatus.OK)
     }
 
     @DeleteMapping("{id}")
