@@ -2,6 +2,7 @@ package com.interplanetarytravel.reservationsystem.controllers
 
 import com.interplanetarytravel.reservationsystem.dtos.LaunchpadDto
 import com.interplanetarytravel.reservationsystem.enums.Launchpad
+import com.interplanetarytravel.reservationsystem.exceptions.LaunchpadNotFoundException
 import com.interplanetarytravel.reservationsystem.utils.toLaunchpadDto
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -24,7 +25,7 @@ class LaunchpadController {
         return if (Launchpad.values().any { it.name == id.toUpperCase() }) {
             ResponseEntity(Launchpad.valueOf(id.toUpperCase()).toLaunchpadDto(), HttpStatus.OK)
         } else {
-            ResponseEntity(HttpStatus.NOT_FOUND)
+            throw LaunchpadNotFoundException()
         }
     }
 }

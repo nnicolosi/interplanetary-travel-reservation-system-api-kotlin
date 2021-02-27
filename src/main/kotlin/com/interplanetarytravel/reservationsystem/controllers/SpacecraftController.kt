@@ -2,6 +2,7 @@ package com.interplanetarytravel.reservationsystem.controllers
 
 import com.interplanetarytravel.reservationsystem.dtos.SpacecraftDto
 import com.interplanetarytravel.reservationsystem.enums.Spacecraft
+import com.interplanetarytravel.reservationsystem.exceptions.SpacecraftNotFoundException
 import com.interplanetarytravel.reservationsystem.utils.toSpacecraftDto
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -24,7 +25,7 @@ class SpacecraftController {
         return if (Spacecraft.values().any { it.name == id.toUpperCase() }) {
             ResponseEntity(Spacecraft.valueOf(id.toUpperCase()).toSpacecraftDto(), HttpStatus.OK)
         } else {
-            ResponseEntity(HttpStatus.NOT_FOUND)
+            throw SpacecraftNotFoundException()
         }
     }
 }

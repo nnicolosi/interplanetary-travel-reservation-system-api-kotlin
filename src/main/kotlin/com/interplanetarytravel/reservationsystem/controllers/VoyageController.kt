@@ -3,6 +3,7 @@ package com.interplanetarytravel.reservationsystem.controllers
 import com.interplanetarytravel.reservationsystem.dtos.VoyageCreateDto
 import com.interplanetarytravel.reservationsystem.dtos.VoyageDto
 import com.interplanetarytravel.reservationsystem.dtos.VoyageUpdateDto
+import com.interplanetarytravel.reservationsystem.exceptions.VoyageNotFoundException
 import com.interplanetarytravel.reservationsystem.services.VoyageService
 import com.interplanetarytravel.reservationsystem.utils.toVoyage
 import com.interplanetarytravel.reservationsystem.utils.toVoyageDto
@@ -21,13 +22,9 @@ class VoyageController(val voyageService: VoyageService) {
 
     @GetMapping("{id}")
     fun voyage(@PathVariable id: Long): ResponseEntity<VoyageDto> {
-        val voyage = voyageService.findById(id)
+        val voyage = voyageService.findById(id).orElseThrow { VoyageNotFoundException() }
 
-        return if (voyage.isPresent) {
-            ResponseEntity(voyage.get().toVoyageDto(), HttpStatus.OK)
-        } else {
-            ResponseEntity(HttpStatus.NOT_FOUND)
-        }
+        return ResponseEntity(voyage.toVoyageDto(), HttpStatus.OK)
     }
 
     @PostMapping("")
@@ -39,9 +36,7 @@ class VoyageController(val voyageService: VoyageService) {
 
     @PutMapping("")
     fun update(@RequestBody dto: VoyageUpdateDto): ResponseEntity<VoyageDto> {
-        if (voyageService.findById(dto.id).isEmpty) {
-            return ResponseEntity(HttpStatus.NOT_FOUND)
-        }
+        voyageService.findById(dto.id).orElseThrow { VoyageNotFoundException() }
 
         val voyage = voyageService.save(dto.toVoyage())
 
@@ -50,9 +45,7 @@ class VoyageController(val voyageService: VoyageService) {
 
     @DeleteMapping("{id}")
     fun cancel(@PathVariable id: Long): ResponseEntity<Unit> {
-        if (voyageService.findById(id).isEmpty) {
-            return ResponseEntity(HttpStatus.NOT_FOUND)
-        }
+        voyageService.findById(id).orElseThrow { VoyageNotFoundException() }
 
         voyageService.cancel(id)
 
