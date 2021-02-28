@@ -16,5 +16,8 @@ data class Voyage(
         val launchpad: Launchpad,
         @Enumerated(EnumType.STRING)
         val destination: Destination,
-        val departure: Date)
+        val departure: Date,
+        @OneToMany(mappedBy = "voyage")
+        var manifest: List<Passenger>)
+
 

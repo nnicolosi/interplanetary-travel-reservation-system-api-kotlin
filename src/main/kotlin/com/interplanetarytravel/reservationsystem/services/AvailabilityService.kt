@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
-class AvailabilityService(val voyageService: VoyageService) {
+class AvailabilityService(private val voyageService: VoyageService) {
 
     fun getAvailableSpacecraft(destination: Destination? = null): List<Spacecraft> {
         // get spacecraft that are not already reserved for a voyage
@@ -53,10 +53,10 @@ class AvailabilityService(val voyageService: VoyageService) {
     }
 
     fun getAvailableVoyages(destination: Destination? = null): List<Voyage> {
-        // TODO: filter out voyages that are fully booked
-
-        // get the list of voyages departing in the future
-        val voyages = voyageService.findAll().filter { it.departure.after(Date()) }
+        // get the list of voyages with capacity remaining and departing in the future
+        val voyages = voyageService.findAll()
+                .filter { it.departure.after(Date()) }
+                .filter { it.manifest.size < it.spacecraft.capacity }
 
         // if destination was specified, filter for voyages with that destination
         return if (destination != null) {

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
-class VoyageService(val voyageRepository: IVoyageRepository) {
+class VoyageService(private val voyageRepository: IVoyageRepository) {
 
     fun findAll(): List<Voyage> = voyageRepository.findAll()
 

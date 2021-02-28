@@ -16,7 +16,7 @@ import java.util.*
 
 @RestController
 @RequestMapping("/availability")
-class AvailabilityController(val availabilityService: AvailabilityService) {
+class AvailabilityController(private val availabilityService: AvailabilityService) {
 
     @RequestMapping("ships")
     fun ships(@RequestParam(required = false) destination: String?): ResponseEntity<List<SpacecraftDto>> {

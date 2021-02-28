@@ -1,12 +1,11 @@
 package com.interplanetarytravel.reservationsystem.controllers
 
-import com.interplanetarytravel.reservationsystem.dtos.VoyageCreateDto
-import com.interplanetarytravel.reservationsystem.dtos.VoyageDto
-import com.interplanetarytravel.reservationsystem.dtos.VoyageUpdateDto
+import com.interplanetarytravel.reservationsystem.dtos.*
 import com.interplanetarytravel.reservationsystem.exceptions.VoyageNotFoundException
 import com.interplanetarytravel.reservationsystem.services.VoyageService
 import com.interplanetarytravel.reservationsystem.services.VoyageValidationService
 import com.interplanetarytravel.reservationsystem.utils.mapUpdatesToVoyage
+import com.interplanetarytravel.reservationsystem.utils.toPassengerNameDto
 import com.interplanetarytravel.reservationsystem.utils.toVoyage
 import com.interplanetarytravel.reservationsystem.utils.toVoyageDto
 import org.springframework.http.HttpStatus
@@ -15,7 +14,9 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/voyage")
-class VoyageController(val voyageService: VoyageService, val voyageValidationService: VoyageValidationService) {
+class VoyageController(
+        private val voyageService: VoyageService,
+        private val voyageValidationService: VoyageValidationService) {
 
     @GetMapping("")
     fun listVoyages(): ResponseEntity<List<VoyageDto>> {
@@ -27,6 +28,14 @@ class VoyageController(val voyageService: VoyageService, val voyageValidationSer
         val voyage = voyageService.findById(id).orElseThrow { VoyageNotFoundException() }
 
         return ResponseEntity(voyage.toVoyageDto(), HttpStatus.OK)
+    }
+
+    @GetMapping("{id}/manifest")
+    fun manifest(@PathVariable id: Long): ResponseEntity<List<PassengerNameDto>> {
+        val voyage = voyageService.findById(id).orElseThrow { VoyageNotFoundException() }
+        val manifest = voyage.manifest.sortedWith(compareBy({ it.lastName }, { it.firstName }))
+
+        return ResponseEntity(manifest.map { it.toPassengerNameDto() }, HttpStatus.OK)
     }
 
     @PostMapping("")
@@ -50,7 +59,7 @@ class VoyageController(val voyageService: VoyageService, val voyageValidationSer
 
     @DeleteMapping("{id}")
     fun cancel(@PathVariable id: Long): ResponseEntity<Unit> {
-        voyageService.findById(id).orElseThrow { VoyageNotFoundException() }
+        voyageValidationService.validateVoyageCancellation(id)
 
         voyageService.cancel(id)
 

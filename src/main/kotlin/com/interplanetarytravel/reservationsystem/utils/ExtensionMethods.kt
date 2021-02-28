@@ -1,6 +1,7 @@
 package com.interplanetarytravel.reservationsystem.utils
 
 import com.interplanetarytravel.reservationsystem.dtos.*
+import com.interplanetarytravel.reservationsystem.entities.Passenger
 import com.interplanetarytravel.reservationsystem.entities.Voyage
 import com.interplanetarytravel.reservationsystem.enums.Destination
 import com.interplanetarytravel.reservationsystem.enums.Launchpad
@@ -39,6 +40,12 @@ fun Date.isAfterToday(): Boolean {
     val date = this.toInstant().truncatedTo(ChronoUnit.DAYS)
 
     return date.isAfter(Instant.now().truncatedTo(ChronoUnit.DAYS))
+}
+
+fun Date.isBeforeToday(): Boolean {
+    val date = this.toInstant().truncatedTo(ChronoUnit.DAYS)
+
+    return date.isBefore(Instant.now().truncatedTo(ChronoUnit.DAYS))
 }
 
 fun Destination.toDestinationDto(): DestinationDto {
@@ -88,7 +95,8 @@ fun VoyageCreateDto.toVoyage(): Voyage {
             this.spacecraft,
             this.launchpad,
             this.destination,
-            this.departure
+            this.departure,
+            mutableListOf()
     )
 }
 
@@ -98,6 +106,34 @@ fun VoyageUpdateDto.mapUpdatesToVoyage(voyage: Voyage): Voyage {
             this.spacecraft,
             this.launchpad,
             voyage.destination,
-            this.departure
+            this.departure,
+            voyage.manifest
+    )
+}
+
+fun Passenger.toPassengerDto(): PassengerDto {
+    return PassengerDto(
+            this.id,
+            this.firstName,
+            this.lastName,
+            this.dateOfBirth,
+            this.voyage.toVoyageDto()
+    )
+}
+
+fun Passenger.toPassengerNameDto(): PassengerNameDto {
+    return PassengerNameDto(
+            this.id,
+            this.firstName,
+            this.lastName
+    )
+}
+
+fun PassengerCreateDto.toPassenger(): Passenger {
+    return Passenger(
+            0,
+            this.firstName,
+            this.lastName,
+            this.dateOfBirth,
     )
 }
