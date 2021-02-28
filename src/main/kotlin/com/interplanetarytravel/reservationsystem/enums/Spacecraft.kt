@@ -1,10 +1,10 @@
 package com.interplanetarytravel.reservationsystem.enums
 
 enum class Spacecraft(
-    val description: String,
-    val designation: String,
-    val capacity: Int,
-    val destinations: List<Destination>
+        val description: String,
+        val designation: String,
+        val capacity: Int,
+        val destinations: List<Destination>
 ) {
     // Lunar Fleet
     UNS_001("United Nations Starship, Lunar Fleet", "UNS 001", 100, listOf(Destination.LUNA)),

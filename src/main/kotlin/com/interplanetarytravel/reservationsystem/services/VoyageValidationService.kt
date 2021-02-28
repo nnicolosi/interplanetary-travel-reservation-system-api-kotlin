@@ -33,7 +33,6 @@ class VoyageValidationService(
         if (!availabilityService.getAvailableSpacecraft(dto.destination).contains(dto.spacecraft)) {
             throw InvalidSpacecraftException(message = "Spacecraft is not certified for the destination")
         }
-
     }
 
     fun validateVoyageUpdateDto(dto: VoyageUpdateDto) {

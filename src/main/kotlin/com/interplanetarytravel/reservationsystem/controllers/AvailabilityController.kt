@@ -4,7 +4,6 @@ import com.interplanetarytravel.reservationsystem.dtos.DestinationDto
 import com.interplanetarytravel.reservationsystem.dtos.LaunchpadDto
 import com.interplanetarytravel.reservationsystem.dtos.SpacecraftDto
 import com.interplanetarytravel.reservationsystem.dtos.VoyageDto
-import com.interplanetarytravel.reservationsystem.enums.Destination
 import com.interplanetarytravel.reservationsystem.services.AvailabilityService
 import com.interplanetarytravel.reservationsystem.utils.*
 import org.springframework.http.HttpStatus

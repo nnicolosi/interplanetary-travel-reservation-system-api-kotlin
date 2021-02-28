@@ -1,6 +1,9 @@
 package com.interplanetarytravel.reservationsystem.controllers
 
-import com.interplanetarytravel.reservationsystem.dtos.*
+import com.interplanetarytravel.reservationsystem.dtos.PassengerNameDto
+import com.interplanetarytravel.reservationsystem.dtos.VoyageCreateDto
+import com.interplanetarytravel.reservationsystem.dtos.VoyageDto
+import com.interplanetarytravel.reservationsystem.dtos.VoyageUpdateDto
 import com.interplanetarytravel.reservationsystem.exceptions.VoyageNotFoundException
 import com.interplanetarytravel.reservationsystem.services.VoyageService
 import com.interplanetarytravel.reservationsystem.services.VoyageValidationService
