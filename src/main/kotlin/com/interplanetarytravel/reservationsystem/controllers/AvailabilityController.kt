@@ -17,7 +17,7 @@ import java.util.*
 @RequestMapping("/availability")
 class AvailabilityController(private val availabilityService: AvailabilityService) {
 
-    @RequestMapping("ships")
+    @RequestMapping("spacecraft")
     fun ships(@RequestParam(required = false) destination: String?): ResponseEntity<List<SpacecraftDto>> {
         val spacecraft = availabilityService.getAvailableSpacecraft(getValidDestinationOrNull(destination))
 
