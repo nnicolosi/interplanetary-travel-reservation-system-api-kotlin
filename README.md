@@ -8,7 +8,7 @@
 This repository contains a Gradle project for a web service API written in Kotlin and leveraging the Spring Boot framework. It uses an H2 database, which can be configured for either the in-memory (default) or the file-based mode of operation.
 
 The project represents a contrived business case, that of an interplanetary travel provider requiring a system for
-scheduling voyages and booking passage for individual customers.
+scheduling voyages and booking passage for individual space travellers.
 
 <br>
 <hr>
