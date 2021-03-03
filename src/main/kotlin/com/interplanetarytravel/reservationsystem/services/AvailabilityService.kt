@@ -5,9 +5,11 @@ import com.interplanetarytravel.reservationsystem.enums.Destination
 import com.interplanetarytravel.reservationsystem.enums.Launchpad
 import com.interplanetarytravel.reservationsystem.enums.Spacecraft
 import com.interplanetarytravel.reservationsystem.exceptions.SpacecraftNotFoundException
+import com.interplanetarytravel.reservationsystem.utils.isAfterToday
 import com.interplanetarytravel.reservationsystem.utils.isSameDayAs
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
+import java.time.LocalDate
 import java.util.*
 
 @Service
@@ -42,7 +44,7 @@ class AvailabilityService(private val voyageService: VoyageService) {
         }
     }
 
-    fun getAvailableLaunchpads(date: Date): List<Launchpad> {
+    fun getAvailableLaunchpads(date: LocalDate): List<Launchpad> {
         // get the list of launchpads in use on the specified date
         val unavailableLaunchpads = voyageService.findAll()
                 .filter { it.departure.isSameDayAs(date) }
@@ -55,7 +57,7 @@ class AvailabilityService(private val voyageService: VoyageService) {
     fun getAvailableVoyages(destination: Destination? = null): List<Voyage> {
         // get the list of voyages with capacity remaining and departing in the future
         val voyages = voyageService.findAll()
-                .filter { it.departure.after(Date()) }
+                .filter { it.departure.isAfterToday() }
                 .filter { it.manifest.size < it.spacecraft.capacity }
 
         // if destination was specified, filter for voyages with that destination

@@ -1,5 +1,5 @@
 package com.interplanetarytravel.reservationsystem.exceptions
 
-import java.util.*
+import java.time.LocalDate
 
-data class CustomExceptionDetails(val message: String?, val timestamp: Date)
+data class CustomExceptionDetails(val message: String?, val timestamp: LocalDate)

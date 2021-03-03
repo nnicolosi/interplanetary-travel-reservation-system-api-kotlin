@@ -1,0 +1,498 @@
+{
+	"info": {
+		"_postman_id": "456bc651-5432-4737-9509-4a0e73b1b466",
+		"name": "Interplanetary Travel Reservation System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List Destinations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/destination",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"destination"
+					]
+				},
+				"description": "Returns a JSON array containing all destinations"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Destination",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/destination/venus",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"destination",
+						"venus"
+					]
+				},
+				"description": "Returns a single destination specified by `id` (case-insensitive)"
+			},
+			"response": []
+		},
+		{
+			"name": "List Spacecraft",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/spacecraft",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"spacecraft"
+					]
+				},
+				"description": "Returns a JSON array containing all spacecraft"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Spacecraft",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/spacecraft/uns_008",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"spacecraft",
+						"uns_008"
+					]
+				},
+				"description": "Returns a single spacecraft specified by `id` (case-insensitive)"
+			},
+			"response": []
+		},
+		{
+			"name": "List Launchpads",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/launchpad",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"launchpad"
+					]
+				},
+				"description": "Returns a JSON array containing all launchpads"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Launchpad",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/launchpad/lp_001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"launchpad",
+						"lp_001"
+					]
+				},
+				"description": "Returns a single launchpad specified by `id` (case-insensitive)"
+			},
+			"response": []
+		},
+		{
+			"name": "List Voyages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/voyage",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"voyage"
+					]
+				},
+				"description": "Returns a JSON array containing all voyages"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Voyage",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"spacecraft\": \"UNS_001\",\n    \"launchpad\": \"LP_001\",\n    \"destination\": \"LUNA\",\n    \"departure\": \"2021-03-30\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/voyage",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"voyage"
+					]
+				},
+				"description": "Creates a voyage from the JSON request body"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Voyage",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/voyage/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"voyage",
+						"1"
+					]
+				},
+				"description": "Returns a single voyage specified by `id` "
+			},
+			"response": []
+		},
+		{
+			"name": "Update Voyage",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"spacecraft\": \"UNS_003\",\n    \"launchpad\": \"LP_001\",\n    \"departure\": \"2021-03-30\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/voyage",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"voyage"
+					]
+				},
+				"description": "Updates the voyage specified by the `id` property in the JSON request body"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Voyage",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/voyage/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"voyage",
+						"1"
+					]
+				},
+				"description": "ancels (deletes) the voyage specified by `id`"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Voyage Manifest",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/voyage/1/manifest",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"voyage",
+						"1",
+						"manifest"
+					]
+				},
+				"description": "Returns a JSON array containing passengers for the voyage"
+			},
+			"response": []
+		},
+		{
+			"name": "Book Passage",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"voyageId\": 1,\n    \"firstName\": \"Nick\",\n    \"lastName\": \"Nicolosi\",\n    \"dateOfBirth\": \"1969-02-05\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/passenger",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"passenger"
+					]
+				},
+				"description": "Books passage based on the JSON request body"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Passenger",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/passenger/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"passenger",
+						"1"
+					]
+				},
+				"description": "Returns a single passenger specified by `id`"
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel Passage",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"voyageId\": 1,\n    \"firstName\": \"Nick\",\n    \"lastName\": \"Nicolosi\",\n    \"dateOfBirth\": \"1969-08-28\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/passenger/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"passenger",
+						"1"
+					]
+				},
+				"description": "Cancels passage for the passenger specified by `id`"
+			},
+			"response": []
+		},
+		{
+			"name": "List Available Spacecraft",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/availability/spacecraft?destination=ganymede",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"availability",
+						"spacecraft"
+					],
+					"query": [
+						{
+							"key": "destination",
+							"value": "ganymede"
+						}
+					]
+				},
+				"description": "Returns a JSON array of available spacecraft, optionally for the given destination"
+			},
+			"response": []
+		},
+		{
+			"name": "List Available Destinations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/availability/destinations?spacecraft=uns_010",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"availability",
+						"destinations"
+					],
+					"query": [
+						{
+							"key": "spacecraft",
+							"value": "uns_010"
+						}
+					]
+				},
+				"description": "Returns a JSON array of available destinations, optionally for the given spacecraft"
+			},
+			"response": []
+		},
+		{
+			"name": "List Available Launchpads",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/availability/launchpads?date=2021-03-30",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"availability",
+						"launchpads"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2021-03-30"
+						}
+					]
+				},
+				"description": "Returns a JSON array of available launchpads on the given date (date is required)"
+			},
+			"response": []
+		},
+		{
+			"name": "List Available Voyages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/availability/voyages?destination=ganymede",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"availability",
+						"voyages"
+					],
+					"query": [
+						{
+							"key": "destination",
+							"value": "ganymede"
+						}
+					]
+				},
+				"description": "Returns a JSON array of available voyages, optionally for the give destination"
+			},
+			"response": []
+		}
+	]
+}

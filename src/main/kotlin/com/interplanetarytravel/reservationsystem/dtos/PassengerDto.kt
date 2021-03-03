@@ -1,11 +1,11 @@
 package com.interplanetarytravel.reservationsystem.dtos
 
-import java.util.*
+import java.time.LocalDate
 
 data class PassengerDto(
         val id: Long,
         val firstName: String,
         val lastName: String,
-        val dateOfBirth: Date,
+        val dateOfBirth: LocalDate,
         val voyage: VoyageDto
 )

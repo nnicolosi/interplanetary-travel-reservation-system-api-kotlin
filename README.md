@@ -1,12 +1,17 @@
 # Interplanetary Travel Reservation System API
 
+<br>
+<hr>
+
 ## Description ##
 
-This repository contains a web service API written in Kotlin and leveraging the Spring Boot framework. It uses an H2
-database, which can be configured for either the in-memory (default) or the file-based mode of operation.
+This repository contains a Gradle project for a web service API written in Kotlin and leveraging the Spring Boot framework. It uses an H2 database, which can be configured for either the in-memory (default) or the file-based mode of operation.
 
 The project represents a contrived business case, that of an interplanetary travel provider requiring a system for
 scheduling voyages and booking passage for individual customers.
+
+<br>
+<hr>
 
 ## Domain Model ##
 
@@ -76,6 +81,9 @@ Passengers are added to the manifest of a voyage. In a more sophisticated system
 independent of voyages, and are associated with one or more voyages via a relation entity such as "passage" or "
 reservation". Perhaps in a future iteration of the system this will be done, but for now this was a convenient way to
 limit scope.
+
+<br>
+<hr>
 
 ## API Endpoints ##
 
@@ -395,4 +403,16 @@ limit scope.
 - If a destination is specified, the voyage must have the same destination
 </details>
 
+<br>
+<hr>
 
+## Running the API ##
+
+When running from within IntelliJ, simply run ReservationSystemApplication as you would any Spring Boot application. 
+When running from the command line, navigate to the project root directory and enter the following command:
+
+`./gradlew bootRun`
+
+With either method, the API should start right up and begin listening on `http://localhost:8080`
+
+Testing the API can be done with the Postman transaction collection (format v2.1) included in this repository.  Import the collection into your Postman client and use the transactions to perform any of the available API operations.

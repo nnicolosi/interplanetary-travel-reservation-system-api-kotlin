@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
-import java.util.*
+import java.time.LocalDate
 
 @RestController
 @RequestMapping("/availability")
@@ -32,8 +32,8 @@ class AvailabilityController(private val availabilityService: AvailabilityServic
     }
 
     @RequestMapping("launchpads")
-    fun launchpads(@RequestParam(required = true) date: Date): ResponseEntity<List<LaunchpadDto>> {
-        val launchpads = availabilityService.getAvailableLaunchpads(date)
+    fun launchpads(@RequestParam(required = true) date: String): ResponseEntity<List<LaunchpadDto>> {
+        val launchpads = availabilityService.getAvailableLaunchpads(LocalDate.parse(date))
 
         return ResponseEntity(launchpads.map { it.toLaunchpadDto() }, HttpStatus.OK)
     }
