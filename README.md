@@ -408,6 +408,7 @@ limit scope.
 
 ## Running the API ##
 
+### Running with Gradle ###
 When running from within IntelliJ, simply run ReservationSystemApplication as you would any Spring Boot application. 
 When running from the command line, navigate to the project root directory and enter the following command:
 
@@ -415,4 +416,21 @@ When running from the command line, navigate to the project root directory and e
 
 With either method, the API should start right up and begin listening on `http://localhost:8080`
 
-Testing the API can be done with the Postman transaction collection (format v2.1) included in this repository.  Import the collection into your Postman client and use the transactions to perform any of the available API operations.
+### Running with Docker ###
+If you want to run the application in a Docker container (and asssuming you have a Docker host to run the container), start by creating an executable jar.  Navigate to the project root directory and enter the following command:
+
+`./gradlew bootJar`
+
+This should create an executable jar in the `/build/libs` directory.  Next you can build a Docker image by entering the following command:
+
+`docker build . -t interplanetary`
+
+After the image has been created, you can run the container (exposing the application on port 8080) by entering the following command:
+
+`docker run -p 8080:8080 interplanetary`
+
+The container should now be running and accessible at `http://localhost:8080`
+
+### Testing the Endpoints ###
+
+Testing the various endpoints of the API can be done with the Postman transaction collection (format v2.1) included in this repository.  Import the collection into your Postman client and use the transactions to perform any of the available API operations.
