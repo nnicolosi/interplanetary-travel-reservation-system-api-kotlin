@@ -24,8 +24,8 @@ There are only a handful of entities in the domain model, each one described bel
 
 ### Destination ###
 
-Destinations represent the planetary bodies (planets and moons) that are available for voyages. Implemented as an
-enumeration to simplify the implementation, which can be justified due to the fact that they are not expected to change
+Destinations represent the planetary bodies (planets and moons) that are available for voyages. They are implemented as an
+enumeration to simplify the implementation. This approach seems justified due to the fact that they are not expected to change
 frequently.
 
 > <details>
@@ -43,8 +43,9 @@ frequently.
 ### Spacecraft ###
 
 Spacecraft represent the vehicles in the company's fleet that are available for voyages. Different spacecraft are
-certified for different destinations and may have different passenger capacity. Implemented as an enumeration to
-simplify the implementation, which can be justified due to the fact that they are not expected to change frequently.
+certified for different destinations and may have different passenger capacity. They are implemented as an
+enumeration to simplify the implementation. This approach seems justified due to the fact that they are not expected to change
+frequently.
 
 > <details>
 >     <summary>Available Spacecraft</summary>
@@ -63,8 +64,9 @@ simplify the implementation, which can be justified due to the fact that they ar
 
 ### Launchpad ###
 
-Launchpads are the origin point for any voyage. Implemented as an enumeration to simplify the implementation, which can
-be justified due to the fact that they are not expected to change frequently.
+Launchpads are the origin point for any voyage. They are implemented as an
+enumeration to simplify the implementation. This approach seems justified due to the fact that they are not expected to change
+frequently.
 
 > <details>
 >     <summary>Available Launchpads</summary>
@@ -82,8 +84,8 @@ effectively "consumes" spacecraft.
 
 ### Passenger ###
 
-Passengers are added to the manifest of a voyage. In a more sophisticated system, there would be "customers" that exist
-independent of voyages, and are associated with one or more voyages via a relation entity such as "passage" or "
+Passengers are added to the manifest of a voyage. In a more sophisticated system, there would be customers that exist
+independent of voyages, and each customer would be associated with one or more voyages via a relation entity such as "passage" or "
 reservation". Perhaps in a future iteration of the system this will be done, but for now this was a convenient way to
 limit scope.
 
