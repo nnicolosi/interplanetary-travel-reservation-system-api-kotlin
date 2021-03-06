@@ -53,7 +53,7 @@ jobs:
         with:
           args:
             -Dsonar.organization=nnicolosi
-            -Dsonar.projectKey=interplanetary-travel-reservation-system-api-kotlin
+            -Dsonar.projectKey=nnicolosi_interplanetary-travel-reservation-system-api-kotlin
             -Dsonar.sources=src/main/
             -Dsonar.tests=src/test/
             -Dsonar.junit.reportsPath=build/test-results/test
