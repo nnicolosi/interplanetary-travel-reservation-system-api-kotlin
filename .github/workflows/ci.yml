@@ -41,7 +41,7 @@ jobs:
         run: ./gradlew clean test
 
   scan:
-    runs-on: unbuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       
