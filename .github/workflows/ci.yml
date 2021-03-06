@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  compile:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -24,8 +24,8 @@ jobs:
           java-version: 1.11
           
       # Execute compilation
-      - name: Compile
-        run: ./gradlew clean compile
+      - name: Build
+        run: ./gradlew clean build -x test
           
   test:
     runs-on: ubuntu-latest
