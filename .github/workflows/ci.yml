@@ -23,6 +23,9 @@ jobs:
         with:
           java-version: 1.11
           
+      - name: Print Directory
+        run: pwd
+          
       # Execute build
       - name: Build
         run: ./gradlew clean build
