@@ -50,6 +50,10 @@ jobs:
        # Execute scan
        - name: SonarCloud Scan
          uses: SonarSource/sonarcloud-github-action@master
+         with:
+           args:
+             -Dsonar.organization=nnicolosi
+             -Dsonar.projectKey=interplanetary-travel-reservation-system-api-kotlin
          env:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
