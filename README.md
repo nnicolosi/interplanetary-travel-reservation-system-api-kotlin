@@ -1,5 +1,7 @@
 # Interplanetary Travel Reservation System API
 
+![ganymede.png](src/main/resources/ganymede.png)
+
 <br>
 <hr>
 
