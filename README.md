@@ -408,6 +408,15 @@ limit scope.
 <br>
 <hr>
 
+## Running the Unit Tests ##
+
+IntelliJ has many affordances for running unit tests.  To run the unit tests from the command line, however, enter the following command:
+
+`./gradlew clean test`
+
+<br>
+<hr>
+
 ## Running the API ##
 
 ### Running with Gradle ###

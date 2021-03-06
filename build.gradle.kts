@@ -6,6 +6,7 @@ plugins {
     kotlin("jvm") version "1.4.30"
     kotlin("plugin.spring") version "1.4.30"
     kotlin("plugin.jpa") version "1.4.30"
+    id("com.adarshr.test-logger") version "2.1.1"
 }
 
 group = "com.interplanetarytravel"
