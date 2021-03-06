@@ -28,7 +28,7 @@ class AvailabilityService(private val voyageService: VoyageService) {
         }
     }
 
-    fun getAvailableDestinations(spacecraft: Spacecraft?): List<Destination> {
+    fun getAvailableDestinations(spacecraft: Spacecraft? = null): List<Destination> {
         // get spacecraft that are not already reserved for a voyage
         val availableSpacecraft = getAvailableSpacecraft()
 
