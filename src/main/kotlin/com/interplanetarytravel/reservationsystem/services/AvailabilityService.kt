@@ -50,7 +50,7 @@ class AvailabilityService(private val voyageService: VoyageService) {
                 .filter { it.departure.isSameDayAs(date) }
                 .map { it.launchpad }
 
-        // return the launchpads not in use on the specified date
+        // respond with the launchpads not in use on the specified date
         return Launchpad.values().filter { !unavailableLaunchpads.contains(it) }
     }
 

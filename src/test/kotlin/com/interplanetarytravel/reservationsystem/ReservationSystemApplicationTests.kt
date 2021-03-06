@@ -8,6 +8,7 @@ class ReservationSystemApplicationTests {
 
     @Test
     fun contextLoads() {
+        // standard check for successfully loaded context
     }
 
 }
