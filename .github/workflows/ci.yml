@@ -40,12 +40,17 @@ jobs:
       - name: Unit Test
         run: ./gradlew clean test
 
-  scan:
+  sonar:
      runs-on: ubuntu-latest
      steps:
        - uses: actions/checkout@v2
+         with:
+           fetch-depth: 0
 
        # Execute scan
        - name: SonarCloud Scan
-       - uses: SonarSource/sonarcloud-github-action@v1.5
+         uses: SonarSource/sonarcloud-github-action@master
+         env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
