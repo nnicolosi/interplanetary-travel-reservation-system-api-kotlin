@@ -12,13 +12,13 @@ on:
 
 jobs:
   # Running everything serially in one job so that reports are generated for SonarScanner
-  everything:
+  build-and-test:
     name: Build and Test
     runs-on: ubuntu-latest
     steps:
       # Check out the code
       - name: Checkout Code
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
 
