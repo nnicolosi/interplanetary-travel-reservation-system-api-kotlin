@@ -13,7 +13,7 @@ enum class Destination(
             "4,821 km",
             "0.126 g",
             "Orbits Jupiter once every 401 hours",
-            "Tidally locked with Jupiter",
+            "Callisto is tidally locked with Jupiter",
             "401 hours"
     ),
     EUROPA(
@@ -21,7 +21,7 @@ enum class Destination(
             "3,121 km",
             "0.134 g",
             "Orbits Jupiter once every 85 hours",
-            "Tidally locked with Jupiter",
+            "Europa is tidally locked with Jupiter",
             "85 hours"
     ),
     GANYMEDE(
@@ -29,7 +29,7 @@ enum class Destination(
             "5,268 km",
             "0.146 g",
             "Orbits Jupiter once every 171 hours",
-            "Tidally locked with Jupiter",
+            "Ganymede is tidally locked with Jupiter",
             "171 hours"
     ),
     IO(
@@ -37,7 +37,7 @@ enum class Destination(
             "3,643 km",
             "0.183 g",
             "Orbits Jupiter once every 42.5 hours",
-            "Tidally locked with Jupiter",
+            "Io is tidally locked with Jupiter",
             "42.5 hours"
     ),
     LUNA(
@@ -45,7 +45,7 @@ enum class Destination(
             "3,475 km",
             "0.1654 g",
             "Orbits Earth every 708 hours",
-            "Tidally locked with Earth",
+            "Luna is tidally locked with Earth",
             "708 hours"
     ),
     MARS(
@@ -61,7 +61,7 @@ enum class Destination(
             "5,149 km",
             "0.138 g",
             "Orbits Saturn once every 382 hours",
-            "Tidally locked with Saturn",
+            "Titan is tidally locked with Saturn",
             "382 hours"
     )
 }
