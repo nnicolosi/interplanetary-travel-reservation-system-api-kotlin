@@ -1,3 +1,7 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=nnicolosi_interplanetary-travel-reservation-system-api-kotlin&metric=alert_status)](https://sonarcloud.io/dashboard?id=nnicolosi_interplanetary-travel-reservation-system-api-kotlin)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=nnicolosi_interplanetary-travel-reservation-system-api-kotlin&metric=ncloc)](https://sonarcloud.io/dashboard?id=nnicolosi_interplanetary-travel-reservation-system-api-kotlin)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=nnicolosi_interplanetary-travel-reservation-system-api-kotlin&metric=coverage)](https://sonarcloud.io/dashboard?id=nnicolosi_interplanetary-travel-reservation-system-api-kotlin)
+
 # Interplanetary Travel Reservation System API
 
 ![ganymede.png](src/main/resources/ganymede.png)
