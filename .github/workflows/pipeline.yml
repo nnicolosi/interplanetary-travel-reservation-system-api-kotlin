@@ -12,7 +12,7 @@ on:
 
 jobs:
   # Running everything serially in one job so that reports are generated for SonarScanner
-  build-and-test:
+  everything:
     name: Build and Test
     runs-on: ubuntu-latest
     steps:
