@@ -3,7 +3,6 @@
 ![ganymede.png](src/main/resources/ganymede.png)
 
 <br>
-<hr>
 
 ## Description ##
 
@@ -13,7 +12,6 @@ The project represents a contrived business case, that of an interplanetary trav
 scheduling voyages and booking passage for individual space travellers.
 
 <br>
-<hr>
 
 ## Domain Model ##
 
@@ -25,17 +23,17 @@ Destinations represent the planetary bodies (planets and moons) that are availab
 enumeration to simplify the implementation, which can be justified due to the fact that they are not expected to change
 frequently.
 
-<details>
-    <summary>Available Destinations</summary>
-
-- Callisto
-- Europa
-- Ganymede
-- Io
-- Luna
-- Mars
-- Titan
-</details>
+> <details>
+>     <summary>Available Destinations</summary>
+>
+>     - Callisto
+>     - Europa
+>     - Ganymede
+>     - Io
+>     - Luna
+>     - Mars
+>     - Titan
+> </details>
 
 ### Spacecraft ###
 
@@ -43,33 +41,33 @@ Spacecraft represent the vehicles in the company's fleet that are available for 
 certified for different destinations and may have different passenger capacity. Implemented as an enumeration to
 simplify the implementation, which can be justified due to the fact that they are not expected to change frequently.
 
-<details>
-    <summary>Available Spacecraft</summary>
-
-- UNS-001 (capacity of 100, certified for Luna only)
-- UNS-002 (capacity of 100, certified for Luna only)
-- UNS-003 (capacity of 100, certified for Luna only)
-- UNS-004 (capacity of 60, certified for Luna and Mars only)
-- UNS-005 (capacity of 60, certified for Luna and Mars only)
-- UNS-006 (capacity of 60, certified for Luna and Mars only)
-- UNS-007 (capacity of 60, certified for Luna and Mars only)
-- UNS-008 (capacity of 20, certified for all destinations)
-- UNS-009 (capacity of 20, certified for all destinations)
-- UNS-010 (capacity of 20, certified for all destinations)
-</details>
+> <details>
+>     <summary>Available Spacecraft</summary>
+>
+>     - UNS-001 (capacity of 100, certified for Luna only)
+>     - UNS-002 (capacity of 100, certified for Luna only)
+>     - UNS-003 (capacity of 100, certified for Luna only)
+>     - UNS-004 (capacity of 60, certified for Luna and Mars only)
+>     - UNS-005 (capacity of 60, certified for Luna and Mars only)
+>     - UNS-006 (capacity of 60, certified for Luna and Mars only)
+>     - UNS-007 (capacity of 60, certified for Luna and Mars only)
+>     - UNS-008 (capacity of 20, certified for all destinations)
+>     - UNS-009 (capacity of 20, certified for all destinations)
+>     - UNS-010 (capacity of 20, certified for all destinations)
+> </details>
 
 ### Launchpad ###
 
 Launchpads are the origin point for any voyage. Implemented as an enumeration to simplify the implementation, which can
 be justified due to the fact that they are not expected to change frequently.
 
-<details>
-    <summary>Available Launchpads</summary>
-
-- Launch Pad #1
-- Launch Pad #2
-- Launch Pad #3
-</details>
+> <details>
+>     <summary>Available Launchpads</summary>
+> 
+>     - Launch Pad #1
+>     - Launch Pad #2
+>     - Launch Pad #3
+> </details>
 
 ### Voyage ###
 
@@ -85,42 +83,57 @@ reservation". Perhaps in a future iteration of the system this will be done, but
 limit scope.
 
 <br>
-<hr>
 
 ## API Endpoints ##
 
+<br>
+
 ### Destination ###
 
-`GET: /destination` - Returns a JSON array containing all destinations
+---
 
-`GET: /destination/{id}` - Returns a single destination specified by`id` (case-insensitive)
+>`GET: /destination` 
 
-<details>
-    <summary>JSON Example of a Destination Object</summary>
+Returns a JSON array containing all destinations
 
-```json
-{
-  "id": "EUROPA",
-  "name": "Europa",
-  "description": "Slightly smaller than Earth's Moon...",
-  "diameter": "3,121 km",
-  "gravity": "0.134 g",
-  "orbit": "Orbits Jupiter once every 85 hours",
-  "rotation": "Tidally locked with Jupiter",
-  "day": "85 hours"
-}
-```
-</details>
+---
+
+>`GET: /destination/{id}`
+
+Returns a single destination specified by`id` (case-insensitive)
+
+JSON Example of a Destination:
+ ```json
+ {
+     "id": "EUROPA",
+     "name": "Europa",
+     "description": "Slightly smaller than Earth's Moon...",
+     "diameter": "3,121 km",
+     "gravity": "0.134 g",
+     "orbit": "Orbits Jupiter once every 85 hours",
+     "rotation": "Tidally locked with Jupiter",
+     "day": "85 hours"
+ }
+ ```
+
+---
+<br>
 
 ### Spacecraft ###
 
-`GET: /spacecraft` - Returns a JSON array containing all spacecraft
+---
 
-`GET: /spacecraft/{id}` - Returns a single spacecraft specified by`id` (case-insensitive)
+>`GET: /spacecraft`
 
-<details>
-    <summary>JSON Example of a Spacecraft Object</summary>
+Returns a JSON array containing all spacecraft
 
+---
+
+>`GET: /spacecraft/{id}`
+
+Returns a single spacecraft specified by`id` (case-insensitive)
+
+JSON Example of a Spacecraft:
 ```json
 {
   "id": "UNS_008",
@@ -138,29 +151,25 @@ limit scope.
   ]
 }
 ```
-</details>
+
+---
+<br>
 
 ### Launchpad ###
 
-`GET: /launchpad` - Returns a JSON array containing all launchpads
+---
 
-`GET: /launchpad/{id}` - Returns a single launchpad specified by`id` (case-insensitive)
+>`GET: /launchpad` 
 
-<details>
-    <summary>JSON Format of a Launchpad Object</summary>
+Returns a JSON array containing all launchpads
 
-```json
-{
-  "id": "string",
-  "description": "string",
-  "designation": "string"
-}
-```
-</details>
+---
 
-<details>
-    <summary>JSON Example of a Launchpad Object</summary>
+>`GET: /launchpad/{id}` 
 
+Returns a single launchpad specified by`id` (case-insensitive)
+
+JSON Example of a Launchpad:
 ```json
 {
   "id": "LP_001",
@@ -168,17 +177,25 @@ limit scope.
   "designation": "LP1"
 }
 ```
-</details>
+
+---
+<br>
 
 ### Voyage ###
 
-`GET: /voyage` - Returns a JSON array containing all voyages
+---
 
-`GET: /voyage/{id}` - Returns a single voyage specified by`id` 
+>`GET: /voyage`
 
-<details>
-    <summary>JSON Example of a Voyage Object</summary>
+Returns a JSON array containing all voyages
 
+---
+
+>`GET: /voyage/{id}`
+
+Returns a single voyage specified by`id` 
+
+JSON Example of a Voyage:
 ```json
 {
   "id": 1,
@@ -209,13 +226,14 @@ limit scope.
   "departure": "2021-03-30T00:00:00.000+00:00"
 }
 ```
-</details>
 
-`POST: /voyage` - Creates a voyage from the JSON request body
+---
 
-<details>
-    <summary>JSON Example of a POST Request Body</summary>
+>`POST: /voyage`
 
+Creates a voyage from the JSON request body
+
+JSON Example of a POST Request Body:
 ```json
 {
   "spacecraft": "UNS_001",
@@ -224,22 +242,20 @@ limit scope.
   "departure": "2021-03-30"
 }
 ```
-</details>
 
-<details>
-    <summary>Validation Rules</summary>
-
+Validation Rules:
 - The spacecraft must be available (not reserved for another voyage)
 - The spacecraft must be certified for the destination
 - The launchpad must be available on the departure date
 - The departure date must be in the future
-</details>
 
-`PUT: /voyage` - Updates the voyage specified by the `id` property in the JSON request body
+---
 
-<details>
-    <summary>JSON Example of a PUT Request Body</summary>
+>`PUT: /voyage` 
 
+Updates the voyage specified by the `id` property in the JSON request body
+
+JSON Example of a PUT Request Body:
 ```json
 {
   "id": 1,
@@ -248,31 +264,30 @@ limit scope.
   "departure": "2021-03-30"
 }
 ```
-</details>
 
-<details>
-    <summary>Validation Rules</summary>
-
+Validation Rules:
 - The spacecraft must be available (not reserved for another voyage)
 - The spacecraft must be certified for the destination
 - The launchpad must be available on the departure date
 - The departure date must be in the future
-</details>
 
-`DELETE: /voyage/{id}` - Cancels (deletes) the voyage specified by`id`
+---
 
-<details>
-    <summary>Validation Rules</summary>
+>`DELETE: /voyage/{id}`
 
+Cancels (deletes) the voyage specified by`id`
+
+Validation Rules:
 - The manifest must be empty (no passengers)
 - The departure date must be in the future
-</details>
 
-`GET: /voyage/{id}/manifest` - Returns a JSON array containing passengers for the voyage
+---
 
-<details>
-    <summary>JSON Example of a Voyage Manifest</summary>
+>`GET: /voyage/{id}/manifest` 
 
+Returns a JSON array containing passengers for the voyage
+
+JSON Example of a Voyage Manifest:
 ```json
 [
   {
@@ -287,16 +302,19 @@ limit scope.
   }
 ]
 ```
-</details>
 
+---
+<br>
 
 ### Passenger ###
 
-`GET: /passenger/{id}` - Returns a single passenger specified by`id`
+---
 
-<details>
-    <summary>JSON Example of a Passenger Object</summary>
+>`GET: /passenger/{id}`
 
+Returns a single passenger specified by`id`
+
+JSON Example of a Passenger:
 ```json
 {
   "id": 1,
@@ -333,13 +351,14 @@ limit scope.
   }
 }
 ```
-</details>
 
-`POST: /passenger` - Books passage based on the JSON request body
+---
 
-<details>
-    <summary>JSON Example of a POST Request Body</summary>
+>`POST: /passenger` 
 
+Books passage based on the JSON request body
+
+JSON Example of a POST Request Body:
 ```json
 {
   "voyageId": 1,
@@ -348,65 +367,68 @@ limit scope.
   "dateOfBirth": "1969-02-05"
 }
 ```
-</details>
 
-<details>
-    <summary>Validation Rules</summary>
-
+Validation Rules:
 - The passenger date of birth must be in the past
 - The departure date must be in the future
 - The spacecraft must have capacity remaining
-</details>
 
-`DELETE: /passenger/{id}` - Cancels passage for the passenger specified by `id`
+---
 
-<details>
-    <summary>Validation Rules</summary>
+>`DELETE: /passenger/{id}` 
 
+Cancels passage for the passenger specified by `id`
+
+Validation Rules:
 - The departure date must be in the future
-</details>
 
+---
+<br>
 
 ### Availability ###
 
-`GET: /availability/spacecraft?destination={destinationId}` - Returns a JSON array of available spacecraft, optionally for the given destination
+---
 
-<details>
-    <summary>Availability Rules</summary>
+>`GET: /availability/spacecraft?destination={destinationId}`
 
+Returns a JSON array of available spacecraft, optionally for the given destination
+
+Availability Rules:
 - The spacecraft must be available (not reserved for another voyage)
 - If a destination is specified, the spacecraft must be certified for the destination
-</details>
 
-`GET: /availability/destinations?spacecraft={spacecraftId}` - Returns a JSON array of available destinations, optionally for the given spacecraft
+---
 
-<details>
-    <summary>Availability Rules</summary>
+>`GET: /availability/destinations?spacecraft={spacecraftId}` 
 
+Returns a JSON array of available destinations, optionally for the given spacecraft
+
+Availability Rules:
 - An available spacecraft must be certified for the destination
 - If a spacecraft is specified, that spacecraft must be available and certified for the destination
-</details>
 
-`GET: /availability/launchpads?date={dateString}` - Returns a JSON array of available launchpads on the given date (date is required)
+---
 
-<details>
-    <summary>Availability Rules</summary>
+>`GET: /availability/launchpads?date={dateString}` 
 
+Returns a JSON array of available launchpads on the given date (date is required)
+
+Availability Rules:
 - The launchpad must not be reserved for another voyage's departure date
-</details>
 
-`GET: /availability/voyages?destination={destinationId}` - Returns a JSON array of available voyages, optionally for the give destination
+---
 
-<details>
-    <summary>Availability Rules</summary>
+>`GET: /availability/voyages?destination={destinationId}` 
 
+Returns a JSON array of available voyages, optionally for the give destination
+
+Availability Rules:
 - The voyage must have a departure date in the future
 - The spacecraft reserved for the voyage must have capacity remaining
 - If a destination is specified, the voyage must have the same destination
-</details>
 
+---
 <br>
-<hr>
 
 ## Running the Unit Tests ##
 
@@ -415,7 +437,6 @@ IntelliJ has many affordances for running unit tests.  To run the unit tests fro
 `./gradlew clean test`
 
 <br>
-<hr>
 
 ## Running the API ##
 
@@ -445,3 +466,4 @@ The container should now be running and accessible at `http://localhost:8080`
 ### Testing the Endpoints ###
 
 Testing the various endpoints of the API can be done with the Postman transaction collection (format v2.1) included in this repository.  Import the collection into your Postman client and use the transactions to perform any of the available API operations.
+
