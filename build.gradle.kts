@@ -7,6 +7,7 @@ plugins {
     kotlin("plugin.spring") version "1.4.30"
     kotlin("plugin.jpa") version "1.4.30"
     id("com.adarshr.test-logger") version "2.1.1"
+    id("jacoco")
 }
 
 group = "com.interplanetarytravel"
@@ -49,4 +50,21 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+tasks.test {
+    finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test) // tests are required to run before generating the report
+    reports {
+        xml.isEnabled = true
+        csv.isEnabled = false
+    }
+}
+
+jacoco {
+    toolVersion = "0.8.6"
+    reportsDirectory.set(file("$buildDir/reports/jacoco"))
 }
