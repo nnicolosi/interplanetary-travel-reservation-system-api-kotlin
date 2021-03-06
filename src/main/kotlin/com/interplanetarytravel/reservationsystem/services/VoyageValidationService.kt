@@ -13,7 +13,6 @@ class VoyageValidationService(
         private val voyageService: VoyageService) {
 
     fun validateVoyageCreateDto(dto: VoyageCreateDto) {
-
         // departure date must be in the future
         if (!dto.departure.isAfterToday()) {
             throw InvalidDepartureDateException()
