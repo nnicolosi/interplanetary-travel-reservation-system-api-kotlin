@@ -9,8 +9,9 @@ import org.springframework.stereotype.Service
 
 @Service
 class VoyageValidationService(
-        private val availabilityService: AvailabilityService,
-        private val voyageService: VoyageService) {
+    private val availabilityService: AvailabilityService,
+    private val voyageService: VoyageService
+) {
 
     fun validateVoyageCreateDto(dto: VoyageCreateDto) {
         // departure date must be in the future
@@ -47,8 +48,8 @@ class VoyageValidationService(
             throw InvalidLaunchpadException()
         }
 
-        // spacecraft must be available
-        if (!availabilityService.getAvailableSpacecraft().contains(dto.spacecraft)) {
+        // spacecraft must be available if it is being updated
+        if (dto.spacecraft != voyage.spacecraft && !availabilityService.getAvailableSpacecraft().contains(dto.spacecraft)) {
             throw InvalidSpacecraftException(message = "Spacecraft is unavailable")
         }
 

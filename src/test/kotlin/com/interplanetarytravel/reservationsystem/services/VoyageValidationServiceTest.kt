@@ -8,6 +8,7 @@ import com.interplanetarytravel.reservationsystem.enums.Destination
 import com.interplanetarytravel.reservationsystem.enums.Launchpad
 import com.interplanetarytravel.reservationsystem.enums.Spacecraft
 import com.interplanetarytravel.reservationsystem.exceptions.*
+import io.kotest.assertions.throwables.shouldNotThrow
 import io.kotest.assertions.throwables.shouldNotThrowAny
 import io.kotest.assertions.throwables.shouldThrow
 import io.mockk.clearAllMocks
@@ -278,6 +279,32 @@ internal class VoyageValidationServiceTest {
             every { availabilityService.getAvailableSpacecraft(voyage.destination) } returns Spacecraft.values().asList()
 
             shouldThrow<InvalidSpacecraftException> { voyageValidationService.validateVoyageUpdateDto(dto) }
+        }
+
+        @Test
+        fun `should not throw InvalidSpacecraftException for input containing same spacecraft`() {
+            val dto = VoyageUpdateDto(
+                100L,
+                Spacecraft.UNS_010,
+                Launchpad.LP_002,
+                LocalDate.now().plusDays(2)
+            )
+
+            val voyage = Voyage(
+                100L,
+                Spacecraft.UNS_010,
+                Launchpad.LP_001,
+                Destination.GANYMEDE,
+                LocalDate.now().plusDays(1),
+                manifest = listOf()
+            )
+
+            every { voyageService.findById(dto.id) } returns Optional.ofNullable(voyage)
+            every { availabilityService.getAvailableLaunchpads(dto.departure) } returns Launchpad.values().asList()
+            every { availabilityService.getAvailableSpacecraft() } returns listOf(Spacecraft.UNS_001, Spacecraft.UNS_002)
+            every { availabilityService.getAvailableSpacecraft(voyage.destination) } returns Spacecraft.values().asList()
+
+            shouldNotThrow<InvalidSpacecraftException> { voyageValidationService.validateVoyageUpdateDto(dto) }
         }
 
         @Test
